@@ -26,7 +26,9 @@ export const router = createBrowserRouter([
         },
         {
           path:'/services',
-          element:<Services/>
+          element:<Services/>,
+          loader:() =>  fetch(`${import.meta.env.VITE_API_URL}/allservices`),
+
         },
         // private routes
         {

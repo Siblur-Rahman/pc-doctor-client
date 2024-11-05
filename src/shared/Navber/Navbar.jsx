@@ -4,7 +4,7 @@ import {NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
-    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+    const [theme, setTheme] = useState("light");
     const handleToggle = (e) =>{
         if(e.target.checked){
             setTheme("dark");
