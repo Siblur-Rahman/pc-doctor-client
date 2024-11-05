@@ -6,6 +6,7 @@ import Registration from "../pages/Registration/Registration";
 import Services from "../pages/Services/Services";
 import AddService from "../pages/Dashboard/AddService/AddService";
 import ManageService from "../pages/Dashboard/ManageService/ManageService";
+import ServiceDetails from "../components/serviceDetails";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
           element:<Services/>,
           loader:() =>  fetch(`${import.meta.env.VITE_API_URL}/allservices`),
 
+        },
+        {
+          path:'/serviceDetails/:id',
+          element:<ServiceDetails/>
         },
         // private routes
         {

@@ -4,7 +4,7 @@ import Service from "../../components/service";
 const Services = () => {
     const services = useLoaderData()
     return (
-        <div className="lg:grid grid-cols-3 items-center">
+        <div className="lg:grid grid-cols-3">
             {
                 services?.map(service => <Service key={service?._id} service={service}/>)
             }

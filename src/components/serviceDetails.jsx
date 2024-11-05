@@ -1,9 +1,19 @@
 
 import PropTypes from 'prop-types';
-import { Link} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useParams} from 'react-router-dom';
 // import axios from 'axios';
 const ServiceDetails = () => {
+    const [service, setService] = useState([])
   const {_id, service_image, service_area, service_name, service_description, price}=service;
+  const {id}=useParams()
+  useEffect(()=>{
+    fetch(`${import.meta.env.VITE_API_URL}/service/${id}`)
+    .then(res=>res.json())
+    .then(data=>{
+        setService(data)
+    })
+},[id])
     return (
         
             <div className="card shadow-xl border-2 p-2 mt-4 h-[600px] grid justify-items-stretch">
