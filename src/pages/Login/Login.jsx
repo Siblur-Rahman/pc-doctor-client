@@ -73,7 +73,7 @@ const Login = () => {
                             <FaGoogle className="mr-4"/>
                             Google
                         </button>
-                <button className='btn w-full mt-4'><Link to="/registration">registration</Link>
+                <button className='btn btn-primary w-full mt-4'><Link to="/registration">registration</Link>
                 </button>
                 </div>
                     

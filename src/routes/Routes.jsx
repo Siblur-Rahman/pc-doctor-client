@@ -5,9 +5,9 @@ import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import Services from "../pages/Services/Services";
 import AddService from "../pages/Dashboard/AddService/AddService";
-import ManageService from "../pages/Dashboard/ManageService/ManageService";
 import ServiceDetails from "../components/serviceDetails";
-
+import ManageService from "../pages/Dashboard/ManageService/ManageService";
+import UpdateService from "../pages/Dashboard/UpdateService/UpdateService";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -28,8 +28,7 @@ export const router = createBrowserRouter([
         {
           path:'/services',
           element:<Services/>,
-          loader:() =>  fetch(`${import.meta.env.VITE_API_URL}/allservices`),
-
+          loader:() =>  fetch(`${import.meta.env.VITE_API_URL}/allservices`)
         },
         {
           path:'/serviceDetails/:id',
@@ -42,7 +41,12 @@ export const router = createBrowserRouter([
         },
         {
           path:'/manageservice',
-          element:<ManageService/>
+          element:<ManageService/>,
+          loader:() =>  fetch(`${import.meta.env.VITE_API_URL}/allservices`)
+        },
+        {
+          path:'/updateservic/:id',
+          element:<UpdateService/>
         }
       ]
     }

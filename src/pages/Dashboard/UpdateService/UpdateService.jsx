@@ -4,16 +4,28 @@ import { FaUtensils } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-const AddService = () => {
+
+const UpdateService = () => {
     const { user} = useAuth();
+    const navigate = useNavigate()
+    const {id} = useParams()
+    const [service, setService] = useState([])
+    useEffect(()=>{
+        fetch(`${import.meta.env.VITE_API_URL}/service/${id}`)
+        .then(res=>res.json())
+        .then(data=>{
+            setService(data)
+        })
+    },[id])
     console.log(user)
     const {
         register,
         handleSubmit,
-        reset
       } = useForm()
       const axiosPublic = useAxiosPublic();
     
@@ -39,8 +51,8 @@ const AddService = () => {
 
             }
             
-            const service = await axiosPublic.post('/service', serviceData);
-            if(service?.data.insertedId){
+            const service = await axiosPublic.put(`/updateservice/${id}`, serviceData);
+            if(service?.data.modifiedCount){
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -48,7 +60,7 @@ const AddService = () => {
                     showConfirmButton: false,
                     timer: 1500
                   });
-                  reset()
+                  navigate('/');
             }
         }
         console.log(res.data)
@@ -57,27 +69,28 @@ const AddService = () => {
       return (
        <>
             <SectionTitle heading={'Add a Service'} subHeading={""}/>
+            {service?.service_image}
             <div className="p-10">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-ful my-6">
                         <label className="label">
                             <span className="label-text">Service name*</span>
                         </label>
-                        <input placeholder="service Name" className="input input-bordered w-full" {...register("service_name")} />
+                        <input defaultValue={service?.service_name} className="input input-bordered w-full" {...register("service_name")} />
                     </div>
                     <div className="flex gap-6">
                         <div className="w-1/2 my-6">
                             <label className="label">
                                 <span className="label-text">Service Area*</span>
                             </label>
-                            <input  placeholder="service Area*" className="input input-bordered w-full" {...register("service_area")} />
+                            <input  defaultValue={service?.service_area} className="input input-bordered w-full" {...register("service_area")} />
                         </div>
                         {/* price */}
                         <div className="w-1/2 my-6">
                             <label className="label">
                                 <span className="label-text">Service Price*</span>
                             </label>
-                            <input  placeholder="Price" className="input input-bordered w-full" {...register("service_price")} />
+                            <input  defaultValue={service?.price} className="input input-bordered w-full" {...register("service_price")} />
                         </div>
                     </div>
                     {/* service Details */}
@@ -85,7 +98,7 @@ const AddService = () => {
                         <div className="label">
                             <span className="label-text">Service Description*</span>
                         </div>
-                        <textarea {...register("service_description")} className="textarea textarea-bordered h-24" placeholder="service Description*"></textarea>
+                        <textarea defaultValue={service?.service_description} {...register("service_description")} className="textarea textarea-bordered h-24"></textarea>
                     </label>
                     {/* file-input */}
                     <div>
@@ -101,4 +114,4 @@ const AddService = () => {
       )
 };
 
-export default AddService;
+export default UpdateService;
