@@ -25,6 +25,7 @@ const bookedService = async () => {
             price: price,
             service_image:service_image,
             service_description:service_description,
+            status:'pending',
             userName:user?.displayName,
             userEmail:user?.email,
         }

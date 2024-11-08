@@ -37,7 +37,7 @@ const Navbar = () => {
                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                     <li><a href="/addservice">Add Service</a></li>
                     <li><a href="/manageservice">Manage Service</a></li>
-                    <li><a href="Booked-Services">Booked-Services</a></li>
+                    <li><a href={`mybookedservices/${user?.email}`}>Booked-Services</a></li>
                     <li><a href="Service-To-Do">Service-To-Do</a></li>
                 </ul>
             </div>: <>
