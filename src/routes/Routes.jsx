@@ -8,10 +8,12 @@ import AddService from "../pages/Dashboard/AddService/AddService";
 import ServiceDetails from "../components/serviceDetails";
 import ManageService from "../pages/Dashboard/ManageService/ManageService";
 import UpdateService from "../pages/Dashboard/UpdateService/UpdateService";
+import ErrorPage from './../pages/ErrorPage';
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+    errorElement: <ErrorPage/>,
       children:[
         {
             path: "/",
@@ -47,7 +49,7 @@ export const router = createBrowserRouter([
         {
           path:'/updateservic/:id',
           element:<UpdateService/>,
-          loader:(params) =>  fetch(`${import.meta.env.VITE_API_URL}/service/${params.id}`)
+          loader:({params}) =>  fetch(`${import.meta.env.VITE_API_URL}/service/${params.id}`)
         }
       ]
     }

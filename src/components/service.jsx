@@ -12,7 +12,7 @@ const Service = ({service}) => {
                         <div className=''>
                                 <div className="text-center text-3xl">{service_name}</div>
                                 <div className='flex justify-between mt-4'>
-                                    <div className="text-2xl"><span className='bg-yellow-100 rounded-lg p-1'>{price}</span></div>
+                                    <div className="text-2xl">$<span className='bg-yellow-100 rounded-lg p-1'>{price}</span></div>
                                     <div className="text-2xl"><span className='bg-yellow-100 rounded-lg p-1'>{service_area}</span></div>
                                 </div>
                                 <div className="mt-2"><span>{service_description}</span></div>
