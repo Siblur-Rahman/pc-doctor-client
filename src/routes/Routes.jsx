@@ -10,6 +10,8 @@ import ManageService from "../pages/Dashboard/ManageService/ManageService";
 import UpdateService from "../pages/Dashboard/UpdateService/UpdateService";
 import ErrorPage from './../pages/ErrorPage';
 import MyBookedServices from "../pages/Dashboard/MyBookedServices/MyBookedServices";
+import ServiceToDo from "../pages/Dashboard/ServiceToDo/ServiceToDo";
+import PrivateRoute from "./PrivateRoute";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -40,17 +42,23 @@ export const router = createBrowserRouter([
         // Dashboard Routes
         {
           path:'/addservice',
-          element:<AddService/>
+          element:<PrivateRoute><AddService/></PrivateRoute>
         },
         {
           path:'/manageservice',
-          element:<ManageService/>,
+           element:<PrivateRoute> <ManageService/> </PrivateRoute>,
           loader:() =>  fetch(`${import.meta.env.VITE_API_URL}/allservices`)
         },
         {
           path:'/mybookedservices/:email',
           element:<MyBookedServices/>,
+          // element:<PrivateRoute> <MyBookedServices/></PrivateRoute>,
           loader:({params}) =>  fetch(`${import.meta.env.VITE_API_URL}/mybookedservices/${params.email}`)
+        },
+        {
+          path:'/servicestodo/:email',
+          element:<ServiceToDo/>,
+          loader:({params}) =>  fetch(`${import.meta.env.VITE_API_URL}/servicestodo/${params.email}`)
         },
         {
           path:'/updateservic/:id',
