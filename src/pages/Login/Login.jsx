@@ -1,15 +1,13 @@
-import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLoin from "../../components/SocialLoin";
 
 
 const Login = () => {
-    const {signInWithGoogle, signIn} = useAuth();
-    const handleGoogleSignIn = () =>{
-        signInWithGoogle()
-    }
+    const {signIn} = useAuth();
+
     const handleLogin = e =>{
         e.preventDefault();
         const form = e.target;
@@ -68,15 +66,10 @@ const Login = () => {
                         </div>
              </form>
              <p className='px-6 text-white'>Are You Here New?</p>
-                <div className="px-8">
-                    <button onClick={handleGoogleSignIn} className="btn w-full">
-                            <FaGoogle className="mr-4"/>
-                            Google
-                        </button>
-                <button className='btn btn-primary w-full mt-4'><Link to="/registration">registration</Link>
-                </button>
-                </div>
-                    
+                <SocialLoin/>
+                    <div className="px-8">
+                            <button className='btn btn-primary w-full mt-4'><Link to="/registration">registration</Link></button>
+                    </div>
         </div>
     </>
     );

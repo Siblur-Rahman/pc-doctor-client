@@ -33,9 +33,11 @@ const AddService = () => {
                 price: parseFloat(data.service_price),
                 service_image:res.data.data.display_url,
                 service_description:data.service_description,
+                bookingCount:0,
                 providerName:user?.displayName,
                 providerEmail:user?.email,
                 providerImage:user?.photoURL
+
 
             }
             

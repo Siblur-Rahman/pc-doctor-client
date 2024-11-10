@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
         // Dashboard Routes
         {
           path:'/addservice',
-          element:<PrivateRoute><AddService/></PrivateRoute>
+          element:<AddService/>
         },
         {
           path:'/manageservice',

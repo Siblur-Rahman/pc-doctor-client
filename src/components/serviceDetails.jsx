@@ -22,8 +22,9 @@ const ServiceDetails = () => {
 
     return (
         
-            <div className="card shadow-xl border-2 p-2 mt-4 h-[600px] grid justify-items-stretch">
+    <div className=''>
                 {showModal && <Modal onClose={()=>setShowModal(false)} service={service}/>}
+            <div className="card shadow-xl border-2 p-2 mt-4 h-[600px] grid justify-items-stretch">
                                 <figure className='bg-base-200 h-[230px] w-[320px] mx-auto'><img src={service_image} alt="pictur" /></figure>
                                 <div className="text-3xl">{service_name}</div>
                                 <div className="text-3xl">{service_description}</div>
@@ -35,6 +36,7 @@ const ServiceDetails = () => {
             <button onClick={()=>setShowModal(true)} className='btn btn-primary'><button>Book Now!</button></button>
 
             </div>
+    </div>
         
     );
 };

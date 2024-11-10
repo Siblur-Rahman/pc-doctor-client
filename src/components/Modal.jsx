@@ -11,7 +11,7 @@ const Modal = ({onClose, service}) => {
     const {user} = useAuth()
 
 
-    const {_id, service_name, service_area, price, service_image, providerName, providerEmail, providerImage, service_description} = service
+    const {_id, service_name, service_area, price, service_image, providerName, providerEmail, providerImage, service_description, bookingCount} = service
 
 
     const closeModal = (e)=>{
@@ -40,6 +40,13 @@ const Modal = ({onClose, service}) => {
         }
         const service = await axiosPublic.post('/bookedservice', serviceData);
         if(service.data.insertedId){
+            let bookingParse = parseFloat(bookingCount);
+            bookingParse++
+            const newBookingCount={
+                booking: bookingParse
+            }
+        // increse BookingCount
+        axiosPublic.patch(`/bookingCount/${_id}`, newBookingCount);
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -49,40 +56,65 @@ const Modal = ({onClose, service}) => {
               });
         }
 }
+const data = [
+    {
+        key:'ServiceId',
+        value:_id,
+    },
+    {
+        key:'Service ',
+        value:service_name
+    },
+    {
+        key:'Provider Name',
+        value:providerName
+    },
+    {
+        key:'Provider Email',
+        value:providerEmail
+    },
+    {
+        key:'Customer Name:',
+        value:user?.displayName
+    },
+    {
+        key:'Customer Email',
+        value:user?.email
+    },
+    {
+        key:'Price',
+        value:price
+    },
+    {
+        key:'Service Area',
+        value:service_area
+    },
+]
     return (
-        <div ref={modalRef} onClick={closeModal} className="fixed inset-0 bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
-            <div className='mt-10 flex flex-col gap-5'> 
-                <button onClick={onClose} className='place-self-end'><X size={30} /></button>
-                <div className='bg-indigo-600 rounded-xl px-10 py-10 flex flex-col gap-5 items-center mx-4'>
-                    <h1 className='text-3xl font-extrabold'>Purchase</h1>
-                    <form onSubmit={handleSubmit(bookedService)}>
-                    <div className="form-control w-ful my-6">
+        <div ref={modalRef} onClick={closeModal} className="bg-slate-900 fixed inset-0 bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-20 lg:w-full]">
+            <div className='flex flex-col'> 
+                <button onClick={onClose} className='place-self-end -mr-3 bg-blue-700 text-white hover:bg-red-600 -mb-4 z-30 rounded-full'><X size={30} /></button>
+                <div className='bg-white rounded-xl px-10 flex flex-col items-center border-2 p-4 over'>
+                        <div className='flex'>
+                            <figure className='h-[230px] w-[320px] mx-auto'><img src={service_image} className='rounded-lg' alt="pictur" /></figure>
+                            <div className='px-4'>
+                                {data?.map((service, index)=><div key={index}> <span className="text-xl font-semibold"> {service?.key}:</span> <span className='rounded-lg p-1'>{service?.value}</span></div>)}
+                            </div>
+                        </div>
+                    <form onSubmit={handleSubmit(bookedService)} className='w-[600px]'>
 
-                    <figure className='bg-base-200 h-[230px] w-[320px] mx-auto'><img src={service_image} alt="pictur" /></figure>
-                    <div className="text-2xl"><span className='rounded-lg p-1'>ServiceId: {_id}</span></div>
-                    <div className="text-2xl"><span className='rounded-lg p-1'>{service_name}</span></div>
-                    <div className="text-2xl"><span className='rounded-lg p-1'>Provider Name: {providerName}</span></div>
-                    <div className="text-2xl"><span className='rounded-lg p-1'>Provider Email: {providerEmail}</span></div>
-                    <div className="text-2xl"><span className='rounded-lg p-1'>Customer Email: {user?.email}</span></div>
-                    <div className="text-2xl"><span className='rounded-lg p-1'>Customer Name: {user?.displayName}</span></div>
-                    <div className="text-2xl"><span className='rounded-lg p-1'>Price: {price}</span></div>
-                    <div className="text-2xl"><span className='rounded-lg p-1'>{service_area}</span></div>
-
-                    {/* Address */}
-                    <div  className="form-control">
-                        <label className="label">
-                            <span className="label-text">Service Description*</span>
-                        </label>
-                        <textarea defaultValue={service_description} {...register("service_description")} className="textarea textarea-bordered h-24"></textarea>
-                    </div>
-                    </div>
-                    {/* Submit */}
-                    <button className='btn btn-primary'><button><LucideShoppingBasket />Purchase!</button></button>
-
-                </form>
+                        {/* Address */}
+                        <div  className="form-control">
+                            <label className="label">
+                                <span className="label-text">Address*</span>
+                            </label>
+                            <textarea defaultValue={'Address Please'} {...register("address")} className="textarea textarea-bordered h-24 w-[600px]"></textarea>
+                        </div>
+                        {/* Submit */}
+                        <div className='w-full flex'><button className='btn btn-primary mx-auto mt-5'><LucideShoppingBasket />Purchase!</button></div>
+                    </form>
                 </div>
             </div>
-            8:24
         </div>
     );
 };

@@ -5,12 +5,12 @@ import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import useAuth from '../../hooks/useAuth';
-import { FaGoogle } from 'react-icons/fa';
+import SocialLoin from '../../components/SocialLoin';
 
 
 const Registration = () => {
     const axiosPublic= useAxiosPublic()
-    const { createUser, updateUserProfile, handleGoogleSignIn } = useAuth()
+    const { createUser, updateUserProfile} = useAuth()
     const {register, handleSubmit, reset, formState: { errors }, } = useForm();
     const navigate = useNavigate();
       const onSubmit = (data) => {
@@ -86,12 +86,8 @@ const Registration = () => {
                             <button className="btn btn-primary">Registration</button>
                         </div>
              </form>
-           <div className="px-8">
-            <button onClick={handleGoogleSignIn} className="btn w-full">
-                    <FaGoogle className="mr-4"/>
-                    Google
-                </button>
-           </div>
+             {/* Social Loin */}
+                    <SocialLoin/>
             <p className='my-4 text-center'>Already Have an Account? <Link className='text-orange-600 font-bold' to="/login">Login</Link> </p>
         </div>
     );

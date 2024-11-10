@@ -71,7 +71,7 @@ const Navbar = () => {
                         user && <>
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                            <img alt="" src={user.photoURL} />
+                            <img alt="" src={user?.photoURL} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-6 p-2 shadow bg-base-100 rounded-box w-52 z-10">
