@@ -6,7 +6,6 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
 import { useLoaderData, useNavigate} from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-// import { useEffect, useState } from "react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
@@ -65,8 +64,7 @@ const UpdateService = () => {
                     <title>Update Service</title>
             </Helmet>
             <SectionTitle heading={'Add a Service'} subHeading={""}/>
-            {service_image}
-            <div className="p-10">
+            <div className="p-4 border-2 border-blue-700">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-ful my-6">
                         <label className="label">

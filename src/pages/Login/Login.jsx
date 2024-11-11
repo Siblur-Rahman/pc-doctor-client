@@ -44,18 +44,18 @@ const Login = () => {
         <Helmet>
             <title>Login</title>
         </Helmet>
-        <div className="lg:w-2/5 mx-auto border-2 border-blue-500 py-4">
-                    <h1 className="text-5xl text-center font-bold text-white">Login now!</h1>
+        <div className="lg:w-3/5 mx-auto border-2 border-blue-500 py-4 p-10 rounded-md">
+                    <h1 className="text-5xl text-center font-bold">Login now!</h1>
             <form className="card-body" onSubmit={handleLogin}>
                         <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-white">Email</span>
+                            {/* <span className="label-text text-white">Email</span> */}
                         </label>
                         <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-white">Password</span>
+                            {/* <span className="label-text text-white">Password</span> */}
                         </label>
                         <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                         <label className="label">

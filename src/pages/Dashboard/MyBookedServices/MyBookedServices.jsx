@@ -10,7 +10,7 @@ const MyBookedServices = () => {
             <Helmet>
                     <title>BookedServices</title>
             </Helmet>
-          <SectionTitle heading={'My Booking Services'}/>
+          <SectionTitle heading={`My Booking Services: ${bookedServices?.length}`}/>
     
           
     

@@ -33,24 +33,19 @@ const Modal = ({onClose, service}) => {
             service_area:service_area,
             price: price,
             service_image:service_image,
-            service_description:service_description,
             status:'pending',
             userName:user?.displayName,
             userEmail:user?.email,
+            userAddress:data?.address,
             providerEmail: providerEmail,
             providerImage:user?.photoURL
         }
-        // const userEmail = {email:user?.email}
+        
         const service = await axiosPublic.post('/bookedservice', serviceData);
-        // axiosPublic.patch('/createCount', userEmail);
         if(service.data.insertedId){
-            let bookingParse = parseFloat(bookingCount);
-            bookingParse++
-            const newBookingCount={
-                booking: bookingParse
-            }
-        // increse BookingCount
-        axiosPublic.patch(`/bookingCount/${_id}`, newBookingCount);
+
+        navigate(`/mybookedservices/${user?.email}`)
+        axiosPublic.patch(`/bookingCount/${_id}`);
             Swal.fire({
                 position: "top-end",
                 icon: "success",

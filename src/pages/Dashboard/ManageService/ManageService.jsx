@@ -28,7 +28,6 @@ const ManageService = () => {
           .then(res =>{
             console.log(res?.data)
             if(res.data?.deletedCount>0){
-              // toast('service Data delete Successfully!')
               getData()
               navigate('/manageservice')
               Swal.fire({

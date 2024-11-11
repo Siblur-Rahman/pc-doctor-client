@@ -28,8 +28,8 @@ const SocialLoin = () => {
     }
 
     return (
-        <div className="px-8">
-            <button onClick={handleGoogleSignIn} className="btn w-full">
+        <div className="px-8 -mt-10">
+            <button onClick={handleGoogleSignIn} className="btn w-full btn-primary">
                 <FaGoogle className="mr-4"/>
                 Google
             </button>

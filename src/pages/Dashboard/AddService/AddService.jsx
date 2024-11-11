@@ -66,7 +66,7 @@ const AddService = () => {
                     <title>Add Service</title>
             </Helmet>
             <SectionTitle heading={'Add a Service'} subHeading={""}/>
-            <div className="p-10">
+            <div className="p-4 border-2 border-blue-700">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-ful my-6">
                         <label className="label">

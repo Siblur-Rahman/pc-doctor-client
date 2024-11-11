@@ -18,15 +18,14 @@ const TopProviders = () => {
   return (
     <div>
       <div className="py-32 ">
-        <h4 data-aos="fade-right" className="text-2xl text-blue-500 text-center">Top #3 Creators</h4>
-        <h2 data-aos="fade-left" className="text-5xl font-bold text-center">Top Contest Creators</h2>
+        <h4 data-aos="fade-right" className="text-2xl text-blue-500 text-center">Top #3 Service Providers</h4>
+        <h2 data-aos="fade-left" className="text-5xl font-bold text-center">Top Service Providers</h2>
 
-        <div className="flex flex-col lg:flex-row gap-4 justify-center items-center mt-16">
+        <div className="flex flex-col lg:flex-row gap-4 justify-between items-center mt-16 p-3">
           {users?.map((user) => (
             <div
-            data-aos="zoom-in"
               key={user._id}
-              className="max-w-xs  bg-[#212472] border p-4 rounded-lg shadow-md mx-4"
+              className="lg:w-[30%]  bg-[blue] border p-4 rounded-lg shadow-md w-full"
             >
               <img
                 src={user?.image}
@@ -38,7 +37,7 @@ const TopProviders = () => {
               </h3>
 
               <p className="text-gray-300 text-center mb-4">
-                Contests Created: {user.createCount}
+                Service Provider: {user.createCount}
               </p>
             </div>
           ))}
