@@ -4,6 +4,7 @@ import { FaUtensils } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
@@ -37,12 +38,15 @@ const AddService = () => {
                 providerName:user?.displayName,
                 providerEmail:user?.email,
                 providerImage:user?.photoURL
-
-
             }
             
             const service = await axiosPublic.post('/service', serviceData);
             if(service?.data.insertedId){
+                // Increce createCount
+                const userEmail = {email:user?.email}
+                axiosPublic.patch('/createCount', userEmail);
+
+                // axiosPublic.patch('/createCount', {email:user?.email});
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -58,6 +62,9 @@ const AddService = () => {
         
       return (
        <>
+            <Helmet>
+                    <title>Add Service</title>
+            </Helmet>
             <SectionTitle heading={'Add a Service'} subHeading={""}/>
             <div className="p-10">
                 <form onSubmit={handleSubmit(onSubmit)}>

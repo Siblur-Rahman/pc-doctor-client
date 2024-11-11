@@ -4,9 +4,11 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../hooks/useAxiosPublic';
 import useAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const Modal = ({onClose, service}) => {
     const modalRef = useRef();
+    const navigate = useNavigate()
     const axiosPublic = useAxiosPublic()
     const {user} = useAuth()
 
@@ -38,7 +40,9 @@ const Modal = ({onClose, service}) => {
             providerEmail: providerEmail,
             providerImage:user?.photoURL
         }
+        // const userEmail = {email:user?.email}
         const service = await axiosPublic.post('/bookedservice', serviceData);
+        // axiosPublic.patch('/createCount', userEmail);
         if(service.data.insertedId){
             let bookingParse = parseFloat(bookingCount);
             bookingParse++

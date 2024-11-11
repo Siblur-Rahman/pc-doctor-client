@@ -6,6 +6,7 @@ import useAuth from './../../../hooks/useAuth';
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageService = () => {
   const navigate = useNavigate();
@@ -49,6 +50,9 @@ const ManageService = () => {
   }
     return (
         <div>
+            <Helmet>
+                    <title>ManageService</title>
+            </Helmet>
             <SectionTitle heading="Manage All Servess" subHeading=""/>
 
             <div className="flex justify-evenly">

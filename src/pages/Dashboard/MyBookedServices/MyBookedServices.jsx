@@ -1,11 +1,15 @@
 import {useLoaderData } from "react-router-dom";
 import SectionTitle from "../../../components/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 
 const MyBookedServices = () => {
     const bookedServices = useLoaderData()
     return (
         <div className="mx-auto max-w-3xl p-8 rounded-xl m-5">
+            <Helmet>
+                    <title>BookedServices</title>
+            </Helmet>
           <SectionTitle heading={'My Booking Services'}/>
     
           

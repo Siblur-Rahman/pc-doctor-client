@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import {useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import SectionTitle from "../../../components/SectionTitle";
+import { Helmet } from "react-helmet-async";
  
 const ServiceToDo = () => {
     const {user} = useAuth()
@@ -41,6 +42,9 @@ const ServiceToDo = () => {
 
     return (
         <div>
+            <Helmet>
+                    <title>Service-To-Do</title>
+            </Helmet>
         <div className="text-3xl py-2">
             <SectionTitle heading={'Service To Do'}/>
         </div>

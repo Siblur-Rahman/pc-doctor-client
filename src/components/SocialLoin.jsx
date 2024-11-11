@@ -15,7 +15,8 @@ const SocialLoin = () => {
             // create user entry in the Database
             const userInfo = {
                 name:result?.user?.displayName,
-                email:result?.user?.email
+                email:result?.user?.email,
+                createCount:0
             }
             axiosPublic.post('/signup', userInfo)
             .then(res =>{

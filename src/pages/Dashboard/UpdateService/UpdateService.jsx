@@ -4,7 +4,8 @@ import { FaUtensils } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate} from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 // import { useEffect, useState } from "react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -14,15 +15,6 @@ const UpdateService = () => {
     const {_id, service_name, service_area, price, service_image, service_description} = useLoaderData()
     const { user} = useAuth();
     const navigate = useNavigate()
-    // const {id} = useParams()
-    // const [service, setService] = useState([])
-    // useEffect(()=>{
-    //     fetch(`${import.meta.env.VITE_API_URL}/service/${id}`)
-    //     .then(res=>res.json())
-    //     .then(data=>{
-    //         setService(data)
-    //     })
-    // },[id])
     console.log(user)
     const {
         register,
@@ -69,6 +61,9 @@ const UpdateService = () => {
         
       return (
        <>
+            <Helmet>
+                    <title>Update Service</title>
+            </Helmet>
             <SectionTitle heading={'Add a Service'} subHeading={""}/>
             {service_image}
             <div className="p-10">

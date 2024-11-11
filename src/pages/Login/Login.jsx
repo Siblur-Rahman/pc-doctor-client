@@ -42,7 +42,7 @@ const Login = () => {
     return (
     <>
         <Helmet>
-            <title>PC-DOCTOR | Login</title>
+            <title>Login</title>
         </Helmet>
         <div className="lg:w-2/5 mx-auto border-2 border-blue-500 py-4">
                     <h1 className="text-5xl text-center font-bold text-white">Login now!</h1>
