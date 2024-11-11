@@ -26,6 +26,7 @@ const Registration = () => {
                 const userInfo = {
                     name:data.name,
                     email:data.email,
+                    image:data.photoURL,
                     createCount:0,
                 }
                 axiosPublic.post('/signup', userInfo)

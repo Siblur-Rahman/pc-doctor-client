@@ -16,6 +16,7 @@ const SocialLoin = () => {
             const userInfo = {
                 name:result?.user?.displayName,
                 email:result?.user?.email,
+                image:result?.user?.photoURL,
                 createCount:0
             }
             axiosPublic.post('/signup', userInfo)
