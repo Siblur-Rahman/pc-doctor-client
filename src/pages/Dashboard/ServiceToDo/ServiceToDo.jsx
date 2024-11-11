@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import {useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import SectionTitle from "../../../components/SectionTitle";
  
 const ServiceToDo = () => {
     const {user} = useAuth()
@@ -41,7 +42,7 @@ const ServiceToDo = () => {
     return (
         <div>
         <div className="text-3xl py-2">
-            <h2>Service To Do</h2>
+            <SectionTitle heading={'Service To Do'}/>
         </div>
         <hr className="w-1/2 mx-auto py-3" />
         <h4>Total service : {service?.length}</h4>
@@ -51,11 +52,11 @@ const ServiceToDo = () => {
             {/* head */}
             <thead className="text-xl">
                 <tr>
-                <th>No</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>status</th>
-                <th>Change status</th>
+                <th  className="text-2xl uppercase"> No</th>
+                <th  className="text-2xl uppercase">Image</th>
+                <th  className="text-2xl uppercase">Name</th>
+                <th  className="text-2xl uppercase">status</th>
+                <th  className="text-2xl uppercase">Change status</th>
                 </tr>
             </thead>
             <tbody>

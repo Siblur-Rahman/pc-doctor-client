@@ -27,7 +27,7 @@ const Modal = ({onClose, service}) => {
 
         const serviceData = {
             uId:_id,
-            service_name:data.service_name,
+            service_name:service_name,
             service_area:service_area,
             price: price,
             service_image:service_image,
@@ -50,7 +50,7 @@ const Modal = ({onClose, service}) => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `${data?.service_name} is added to the service`,
+                title: `The servic is added to Your Booking List`,
                 showConfirmButton: false,
                 timer: 1500
               });
@@ -108,7 +108,7 @@ const data = [
                             <label className="label">
                                 <span className="label-text">Address*</span>
                             </label>
-                            <textarea defaultValue={'Address Please'} {...register("address")} className="textarea textarea-bordered h-24 w-[600px]"></textarea>
+                            <textarea placeholder={'Address Please'} {...register("address")} className="textarea textarea-bordered h-24 w-[600px]"></textarea>
                         </div>
                         {/* Submit */}
                         <div className='w-full flex'><button className='btn btn-primary mx-auto mt-5'><LucideShoppingBasket />Purchase!</button></div>

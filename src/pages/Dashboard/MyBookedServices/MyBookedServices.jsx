@@ -1,11 +1,12 @@
 import {useLoaderData } from "react-router-dom";
+import SectionTitle from "../../../components/SectionTitle";
 
 
 const MyBookedServices = () => {
     const bookedServices = useLoaderData()
     return (
         <div className="mx-auto max-w-3xl p-8 rounded-xl m-5">
-          <h1 className="text-2xl font-bold text-center">My Booking Services</h1>
+          <SectionTitle heading={'My Booking Services'}/>
     
           
     
@@ -24,11 +25,11 @@ const MyBookedServices = () => {
               <tbody>
                 {bookedServices?.map((service) => (
                   <tr key={service?._id}>
-                    <td className="border-2 text-3xl text-center">
-                      {service.service_name}
+                    <td className="border-2 text-2xl text-center">
+                      {service?.service_name}
                     </td>
-                    <td className="border-2 text-3xl text-center">
-                      {service.status}
+                    <td className="border-2 text-2xl text-center">
+                      {service?.status}
                     </td>
                   </tr>
                 ))}

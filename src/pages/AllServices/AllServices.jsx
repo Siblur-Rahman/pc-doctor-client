@@ -1,10 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import Service from "../../components/service";
+import SectionTitle from "../../components/SectionTitle";
 
-const Services = () => {
-    const services = useLoaderData()
+const AllServices = () => {
+    const services = useLoaderData();
     return (
-        <div className="lg:grid grid-cols-3">
+        <div className="">
+            <SectionTitle heading={'All Services are Heare'}/>
             {
                 services?.map(service => <Service key={service?._id} service={service}/>)
             }
@@ -12,4 +14,4 @@ const Services = () => {
     );
 };
 
-export default Services;
+export default AllServices;

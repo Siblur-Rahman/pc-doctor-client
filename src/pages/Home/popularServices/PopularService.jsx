@@ -1,8 +1,7 @@
 
 import PropTypes from 'prop-types';
 import { Link} from 'react-router-dom';
-// import axios from 'axios';
-const Service = ({service}) => {
+const PopularServic = ({service}) => {
   const {_id, service_image, service_area, service_name, service_description, price}=service;
     return (
         
@@ -13,9 +12,8 @@ const Service = ({service}) => {
                                 <div className="text-center text-3xl">{service_name}</div>
                                 <div className='flex justify-between mt-4'>
                                     <div className="text-2xl font-semibold">$<span className='rounded-lg p-1'>{price}</span></div>
-                                    <div className="text-2xl font-semibold"><span className='rounded-lg p-1'>{service_area}</span></div>
                                 </div>
-                                <div className="mt-2"><span>{service_description}</span></div>
+                                <div className="mt-2"><span>{service_description?.slice(0, 50)}</span></div>
                         </div>       
                             <Link to={`/serviceDetails/${_id}`} className='btn btn-primary'><button>Details</button></Link>
                 </div>
@@ -23,7 +21,7 @@ const Service = ({service}) => {
         
     );
 };
-Service.propTypes = {
+PopularServic.propTypes = {
     service: PropTypes.object.isRequired,
     }
-export default Service;
+export default PopularServic;

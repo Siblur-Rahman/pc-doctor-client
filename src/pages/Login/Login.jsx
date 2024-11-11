@@ -1,5 +1,5 @@
 import useAuth from "../../hooks/useAuth";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import SocialLoin from "../../components/SocialLoin";
@@ -7,7 +7,8 @@ import SocialLoin from "../../components/SocialLoin";
 
 const Login = () => {
     const {signIn} = useAuth();
-
+    const location = useLocation();
+    const navigate = useNavigate();
     const handleLogin = e =>{
         e.preventDefault();
         const form = e.target;
@@ -17,7 +18,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-
+            navigate(location?.state ? location.state : "/");
             Swal.fire({
             title: "User Login Successful",
             showClass: {

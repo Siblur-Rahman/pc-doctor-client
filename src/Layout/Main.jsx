@@ -4,11 +4,9 @@ import Footer from "../shared/Footer/Footer";
 
 const Main = () => {
     return (
-        <div className="relative">
-           <div className="mx-auto">
+        <div className="max-w-5xl mx-auto">
                 <Navbar/>
-           </div>
-            <div className="pt-20 h-[1600px]">
+            <div className="pt-20 min-h-screen">
                 <Outlet/>
             </div>
             <div>

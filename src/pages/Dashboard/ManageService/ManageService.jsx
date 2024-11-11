@@ -14,7 +14,7 @@ const ManageService = () => {
   const {user} = useAuth()
   useEffect(()=>{
     getData()
-  },[user])
+  },[user, services?.length])
   const getData = async () =>{
     axiosPublic(`${import.meta.env.VITE_API_URL}/manageservices/${user?.email}`)
     .then(res =>{
@@ -28,7 +28,8 @@ const ManageService = () => {
             console.log(res?.data)
             if(res.data?.deletedCount>0){
               // toast('service Data delete Successfully!')
-              navigate('/')
+              getData()
+              navigate('/manageservice')
               Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -48,7 +49,7 @@ const ManageService = () => {
   }
     return (
         <div>
-            <SectionTitle heading="Manage All Servess" subHeading="Hury Uo"/>
+            <SectionTitle heading="Manage All Servess" subHeading=""/>
 
             <div className="flex justify-evenly">
                 <h2 className="text-4xl uppercase">Total users: {services.length}</h2>
@@ -85,14 +86,14 @@ const ManageService = () => {
                   </th>
                   <th>
                    <Link to={`/updateservic/${servic?._id}`}>
-                        <button className="btn btn-ghost btn-lg bg-orange-500">
+                        <button className="btn btn-primary btn-lg">
                             <FaEdit className="text-white"/>
                         </button>
                    </Link>
                   </th>
                   <th>
-                    <button onClick={()=>handleDelete(servic?._id)} className="btn btn-ghost btn-xs">
-                        <FaTrashAlt className="text-red-600"/>
+                    <button onClick={()=>handleDelete(servic?._id)} className="btn btn-primary btn-lg">
+                        <FaTrashAlt className=""/>
                     </button>
                   </th>
                 </tr>)

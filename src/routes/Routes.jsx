@@ -3,7 +3,7 @@ import Main from "../Layout/Main";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
-import Services from "../pages/Services/Services";
+import AllServices from "../pages/AllServices/AllServices";
 import AddService from "../pages/Dashboard/AddService/AddService";
 import ServiceDetails from "../components/serviceDetails";
 import ManageService from "../pages/Dashboard/ManageService/ManageService";
@@ -31,33 +31,33 @@ export const router = createBrowserRouter([
             element:<Login/>
         },
         {
-          path:'/services',
-          element:<Services/>,
+          path:'/allservices',
+          element:<AllServices/>,
           loader:() =>  fetch(`${import.meta.env.VITE_API_URL}/allservices`)
         },
         {
           path:'/serviceDetails/:id',
-          element:<ServiceDetails/>
+          element:<PrivateRoute><ServiceDetails/></PrivateRoute>
         },
         // Dashboard Routes
         {
           path:'/addservice',
-          element:<AddService/>
+          element:<PrivateRoute><AddService/></PrivateRoute>
         },
         {
           path:'/manageservice',
-           element:<PrivateRoute> <ManageService/> </PrivateRoute>,
+           element:<PrivateRoute><ManageService/></PrivateRoute>,
           loader:() =>  fetch(`${import.meta.env.VITE_API_URL}/allservices`)
         },
         {
           path:'/mybookedservices/:email',
-          element:<MyBookedServices/>,
+          element:<PrivateRoute><MyBookedServices/></PrivateRoute>,
           // element:<PrivateRoute> <MyBookedServices/></PrivateRoute>,
           loader:({params}) =>  fetch(`${import.meta.env.VITE_API_URL}/mybookedservices/${params.email}`)
         },
         {
           path:'/servicestodo/:email',
-          element:<ServiceToDo/>,
+          element:<PrivateRoute><ServiceToDo/></PrivateRoute>,
           loader:({params}) =>  fetch(`${import.meta.env.VITE_API_URL}/servicestodo/${params.email}`)
         },
         {
